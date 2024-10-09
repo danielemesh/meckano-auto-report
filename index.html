@@ -1,13 +1,1540 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="en" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <link href="/vite.svg" rel="icon" type="image/svg+xml"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Vite + TS</title>
+</head>
+<body>
+<div class="jqmWindow wide-dialog jqmID1" id="freeReporting-dialog" style="z-index: 3300; display: block;">
+  <div class="top-wide"></div>
+  <div class="view-wide">
+    <div class="close-area">
+      <a></a>
+    </div>
+    <div class="line dialog-content">
+      <div>
+        <div class="inner-menu report-popup">
+          <div class="menu-slider" style="left: 0px; width: 76.5938px; display: block;"></div>
+          <ul>
+            <li class="attendance active">
+              <span>Quick edit</span>
+            </li>
+            <li class="absence">
+              <span>Absence</span>
+            </li>
+            <li class="quick-report">
+                    <span>
+                        Quick report                    </span>
+            </li>
+          </ul>
+        </div>
+        <div class="big-preloader" style="display: none;"></div>
+        <div class="message" style="text-align: center; font-weight: bold; direction: rtl; display: none;">The system is
+          updating the reports, please hold...
+        </div>
+        <div class="report-inner-view attendance-view" style="">
+          <div class="line data" style="min-height:450px;">
+            <div class="employee-attendance-content">
+              <div class="popReportButton" style="position: absolute;top:80px;left: 60px;">
+                <div class="report-month-selector-button">
+                  <button class="save button-refresh-data update-freeReporting" type="button">Save &amp; close</button>
+                </div>
+              </div>
+              <div class="divDirLtr" style="direction: rtl;">
+                <table class="hours-report">
+                  <tbody>
+                  <tr>
+                    <td class="dateHeader" style="font-size:10pt;font-weight:bold;width:130px;text-align: center">Date
+                    </td>
+                    <td class="checkInHeader" style="font-size:10pt;font-weight:bold;width:80px;text-align: center">
+                      Clock-in
+                    </td>
+                    <td class="checkOutHeader" style="font-size:10pt;font-weight:bold;width:100px;text-align: center">
+                      Clock-out
+                    </td>
+                    <td class="missingHeader" style="font-size:10pt;font-weight:bold;width:110px;text-align: center">
+                      Absence
+                    </td>
+                    <td class="" style="font-size:10pt;font-weight:bold;width:20px;text-align: center"></td>
+                  </tr>
+                  <tr class="alt1 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">21/09/2024 Sat</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">22/09/2024 Sun</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">23/09/2024 Mon</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">24/09/2024 Tue</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">25/09/2024 Wed</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">26/09/2024 Thu</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">27/09/2024 Fri</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">28/09/2024 Sat</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">29/09/2024 Sun</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">30/09/2024 Mon</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">01/10/2024 Tue</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">02/10/2024 Wed</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription" style="display: block;">Holiday Eve</span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">03/10/2024 Thu</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription" style="display: block;">Holiday</span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">04/10/2024 Fri</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription" style="display: block;">Holiday</span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">05/10/2024 Sat</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">06/10/2024 Sun</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">07/10/2024 Mon</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">08/10/2024 Tue</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">09/10/2024 Wed</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">10/10/2024 Thu</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">11/10/2024 Fri</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">12/10/2024 Sat</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">13/10/2024 Sun</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">14/10/2024 Mon</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">15/10/2024 Tue</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">16/10/2024 Wed</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription" style="display: block;">Holiday Eve</span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">17/10/2024 Thu</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription" style="display: block;">Holiday</span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">18/10/2024 Fri</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt1 holiday-bg-row">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">19/10/2024 Sat</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  <tr class="alt0">
+                    <td class="date" style="font-size:10pt;padding:2px;">
+                      <a class="insert-row" json="{&quot;info&quot;:&quot;Add line&quot;,&quot;tooltip&quot;:1}"
+                         style="margin-top: 2px;">
+                        <svg class="insertRow">
+                          <use xlink:href="#plusInCircle"></use>
+                        </svg>
+                      </a>
+                      <span class="dateText">20/10/2024 Sun</span>
+                      <span class="wrapperHolidayIcon"><img class="holiday-icon"
+                                                            src="images/contract-edit-holiday-calculation.png"></span>
+                      <span class="specialDayDescription"></span>
+                    </td>
+                    <td class="checkIn" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkIn"
+                                                                                                      style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                      type="text">
+                    </td>
+                    <td class="checkOut" style="font-size:10pt;text-align: center;padding:2px;"><input class="checkOut"
+                                                                                                       style="width:50px;direction: ltr;text-align: center;border:1px solid #b3b3b3 ;"
+                                                                                                       type="text">
+                    </td>
+                    <td class="missing" style="font-size:10pt;text-align: center;padding:2px;">
+                      <div class="missing">
+                        <select class="select-box" style="width:150px;border:1px solid #b3b3b3 ;" tabindex="-1">
+                          <option value="0">No event</option>
+                          <option value="66955">היעדרות</option>
+                          <option value="66956">היעדרות מאושרת</option>
+                          <option value="66954">השתלמות</option>
+                          <option value="66957">חג</option>
+                          <option value="66949">חופש</option>
+                          <option value="66953">חצי יום חופש</option>
+                          <option value="104707">חצי יום מחלה</option>
+                          <option value="114342">כנס</option>
+                          <option value="66950">מחלה</option>
+                          <option value="66951">מחלת ילד</option>
+                          <option value="66952">מילואים</option>
+                          <option value="66958">ערב חג</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td class="missing-doc" style="font-size:10pt;text-align: center;padding:2px; display: none;">
+                      <a class="free-reporting-doc report-docs"></a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="report-inner-view absence-view" style="display: none;">
+          <div class="line data">
+            <div class="employeeAddAbsence-content">
+              <div class="form-input">
+                <div>Event Type</div>
+                <div class="absence-list-wrapper">
+                  <select class="typeAbsence"></select>
+                  <div class="missingDocWrapper" style="display: none">
+                    <a class="missingDoc report-docs">
+                      <svg class="reportDocs">
+                        <use xlink:href="#reportDocs"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-input">
+                <label>Dates range</label>
+                <div class="datepicker-flex">
+                  <div class="datepicker-start-end wrapper-datepicker input-bg-datepicker">
+                    <input class="datepicker" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="form-input">
+                <div class="f settings">
+                  Advanced
+                  <svg class="arrowIcon">
+                    <use xlink:href="#arrowIcon"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="form-input comment" style="display: none;">
+                <div>Comment</div>
+                <div class="content-side">
+                  <div class="textarea-wrapper">
+                    <textarea class="comment"
+                              placeholder="Insert comment that will appear next to the event in the time-sheet."></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form-input days" style="display: none;">
+                <div>Days</div>
+                <div class="content-side days-choice">
+                  <div style="padding-top: 7px;">
+                    <input class="days" type="checkbox" value="0">Su&nbsp;<input class="days" type="checkbox" value="1">Mo&nbsp;<input
+                    class="days" type="checkbox" value="2">Tu&nbsp;<input class="days" type="checkbox" value="3">We&nbsp;<input
+                    class="days" type="checkbox" value="4">Th&nbsp;<input class="days" type="checkbox" value="5">Fr&nbsp;<input
+                    class="days" type="checkbox" value="6">Sa&nbsp;
+                  </div>
+                  <div><input class="days" type="checkbox" value="7">Holiday Eve&nbsp;<input class="days" type="checkbox"
+                                                                                             value="8">Holiday&nbsp;<input
+                    class="days" type="checkbox" value="9">Intermediate&nbsp;
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wrapperButtons wrapper-buttons">
+              <button class="save" id="save" type="button">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="report-inner-view quick-report-view" style="display: none;">
+          <div class="line data">
+            <div class="employee-quick-report-content">
+              <div class="form-input">
+                <label>Dates range</label>
+                <div class="datepicker-flex">
+                  <div class="datepicker-start-end wrapper-datepicker quick-report input-bg-datepicker">
+                    <input class="datepicker" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="form-input">
+                <table class="sortable-list editable-report quick-report">
+                  <thead>
+                  <tr class="quick-report-head">
+                    <th>Clock-in</th>
+                    <th>Clock-out</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="check-in-out">
+                    <td>
+                      <div class="check-in flex justify-center">
+                        <span class="check-in-mask" tabindex="0"></span>
+                        <input class="report-entry checkIn" style="display: none;" type="text">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="check-out flex justify-center">
+                        <span class="check-out-mask" tabindex="0"></span>
+                        <input class="report-entry checkout" style="display: none;" type="text">
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="form-input">
+                <div class="quick-report-settings">
+                  Advanced
+                  <svg class="quick-report-icon arrowIcon">
+                    <use xlink:href="#arrowIcon"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="form-input comment quick-report-setting" style="display: none;">
+                <div>Comment</div>
+                <div class="content-side">
+                  <div class="textarea-wrapper">
+                    <textarea class="comment" placeholder="You can fill in a comment for the report."></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form-input days quick-report-setting" style="display: none;">
+                <div>Days</div>
+                <div class="content-side days-choice">
+                  <div>
+                    <input class="days" type="checkbox" value="0">Su<input class="days" type="checkbox"
+                                                                           value="1">Mo<input class="days"
+                                                                                                 type="checkbox" value="2">Tu<input
+                    class="days" type="checkbox" value="3">We<input class="days" type="checkbox" value="4">Th<input
+                    class="days" type="checkbox" value="5">Fr<input class="days" type="checkbox" value="6">Sa
+                  </div>
+                  <div><input class="days" type="checkbox" value="7">Holiday Eve<input class="days" type="checkbox"
+                                                                                       value="8">Holiday<input
+                    class="days" type="checkbox" value="9">Intermediate
+                  </div>
+                </div>
+              </div>
+              <div class="form-input ignoreEvents quick-report-setting" style="display: none;">
+                <div>Events</div>
+                <div class="content-side input-checkbox">
+                  <input class="ignoreEvent" type="checkbox" value="1">Skip days with event
+                </div>
+              </div>
+            </div>
+            <div class="wrapperButtons wrapper-buttons">
+              <button class="save" id="save" type="button">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-wide"></div>
+</div>
+
+
+<script src="/src/main.ts" type="module"></script>
+</body>
 </html>
