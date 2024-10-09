@@ -25,10 +25,13 @@ function getRelevantTableRows() {
   rows.shift();
   return rows;
 }
+function getDateText(dateElement) {
+  const dateText = dateElement.querySelector(".dateText");
+  return (dateText == null ? void 0 : dateText.innerText) || "N/A";
+}
 function composeDryRunData(tableRows, skipConfiguredDays) {
   const dryRunData = [];
   tableRows.forEach((tableRow) => {
-    var _a;
     const date = tableRow.querySelector("td.date") || null;
     if (!date) return;
     if (date.querySelector(".specialDayDescription:not(:empty)")) return;
@@ -42,7 +45,7 @@ function composeDryRunData(tableRows, skipConfiguredDays) {
     const uuid = crypto.randomUUID();
     checkIn.id = `checkIn__${uuid}`;
     checkOut.id = `checkOut__${uuid}`;
-    const dateText = ((_a = date.querySelector(".dateText")) == null ? void 0 : _a.innerText) || "N/A";
+    const dateText = getDateText(date);
     dryRunData.push({
       checkInId: checkIn.id,
       checkOutId: checkOut.id,
@@ -73,4 +76,18 @@ function composeRandomizedTimeValues() {
     hoursDiff: dtf.format(hoursDiff)
   };
 }
+function applyToAllAbsence(absenceId = "66952") {
+  const tableRows = getRelevantTableRows();
+  if (!tableRows) return;
+  tableRows.forEach((tableRow) => {
+    const date = tableRow.querySelector("td.date") || null;
+    if (!date) return;
+    if (date.querySelector(".specialDayDescription:not(:empty)")) return;
+    const absence = tableRow.querySelector(".select-box");
+    if (!absence) return;
+    if (absence.value !== "0") return;
+    absence.value = absenceId;
+  });
+}
 window.runMeckanoAutoReport = main;
+window.applyToAllAbsence = applyToAllAbsence;

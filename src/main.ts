@@ -1,3 +1,10 @@
+declare global {
+  interface Window {
+    runMeckanoAutoReport: typeof main
+    applyToAllAbsence: typeof applyToAllAbsence
+  }
+}
+
 interface Row {
   checkIn: string;
   checkInId: string;
@@ -49,6 +56,12 @@ function getRelevantTableRows() {
   return rows;
 }
 
+function getDateText(dateElement: HTMLTableCellElement) {
+  const dateText = dateElement.querySelector('.dateText') as HTMLElement | null;
+
+  return dateText?.innerText || 'N/A'
+}
+
 function composeDryRunData(tableRows: Element[], skipConfiguredDays: boolean) {
   const dryRunData: Row[] = [];
 
@@ -80,7 +93,7 @@ function composeDryRunData(tableRows: Element[], skipConfiguredDays: boolean) {
     checkIn.id = `checkIn__${uuid}`;
     checkOut.id = `checkOut__${uuid}`;
 
-    const dateText = (date.querySelector('.dateText') as HTMLElement | null)?.innerText || 'N/A'
+    const dateText = getDateText(date);
 
     dryRunData.push({
       checkInId: checkIn.id,
@@ -122,12 +135,29 @@ function composeRandomizedTimeValues() {
   };
 }
 
-window.runMeckanoAutoReport = main;
+function applyToAllAbsence(absenceId = '66952') {
+  const tableRows = getRelevantTableRows();
 
-declare global {
-  interface Window {
-    runMeckanoAutoReport: typeof main
+  if (!tableRows) return;
 
-  }
+  tableRows.forEach((tableRow) => {
+    const date = tableRow.querySelector('td.date') as HTMLTableCellElement || null;
+
+    if (!date) return;
+
+    // Skip special event days (Holiday, Holiday Eve)
+    if (date.querySelector('.specialDayDescription:not(:empty)')) return;
+
+    const absence = tableRow.querySelector('.select-box') as HTMLSelectElement | null;
+
+    if (!absence) return;
+
+    // Skip days with configured absence
+    if (absence.value !== '0') return;
+
+    absence.value = absenceId;
+  });
 }
 
+window.runMeckanoAutoReport = main;
+window.applyToAllAbsence = applyToAllAbsence;
